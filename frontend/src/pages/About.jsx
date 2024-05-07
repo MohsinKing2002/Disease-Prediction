@@ -2,22 +2,18 @@ const people = [
   {
     name: "Mohsin King",
     role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "/mohsin.jpeg",
   },
   {
     name: "Sk Asif",
     role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "/asif.jpeg",
   },
   {
     name: "Md Alif",
     role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "/alif.jpeg",
   },
-  // More people...
 ];
 
 export default function Example() {
@@ -42,12 +38,12 @@ export default function Example() {
               Who are we ?
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Introducing our state-of-the-art Disease Prediction Model powered
-              by cutting-edge machine learning technology. Our platform offers a
-              quick and accurate assessment of your health based on the symptoms
-              you provide. Simply enter your symptoms, and our intelligent
-              system will analyze the data to predict potential diseases or
-              health conditions.
+              Three of us are final year students of Aliah University, pursuing
+              4-year B.Tech in Computer Science and Engineering major. This is
+              our final year project on Disease Prediction System under the
+              supervision of Prof. Abisekh sir. We have used a Robust Model for
+              prediction scenarios and Developed an attractive UI for
+              interaction with the model.
             </p>
           </div>
         </div>
@@ -58,14 +54,11 @@ export default function Example() {
             Meet our Team
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae
-            elementum enim vitae ullamcorper suspendisse.
+            We are a team of three final year students. Developed a Disease
+            Prediction System under the guidance of Prof. Abisekh Sir.
           </p>
         </div>
-        <ul
-          role="list"
-          className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
-        >
+        <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {people.map((person) => (
             <li key={person.name}>
               <div className="flex items-center gap-x-6">

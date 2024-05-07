@@ -201,7 +201,6 @@ def predictDisease():
     # Input: string containing symptoms separated by commas
     # Output: Generated predictions by models
     def predictDisease(symptoms):
-        print("symp->", symptoms)
         symptoms = symptoms.title() 
         symptoms = symptoms.split(",")
         # creating input data for the models

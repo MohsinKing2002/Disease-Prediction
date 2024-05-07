@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Switch } from "@headlessui/react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useNavigate } from "react-router-dom";
 
 export default function Example() {
-  const [agreed, setAgreed] = useState(false);
+  const [name, setName] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <div className="isolate bg-white px-6 py-12 lg:px-8">
@@ -28,7 +24,17 @@ export default function Example() {
           Get In Touch
         </h2>
       </div>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!name) alert("All details are mandatory!");
+          else {
+            alert(`Thank you Mr. ${name}\n We'll be back to you.`);
+            navigate("/");
+          }
+        }}
+        className="mx-auto mt-16 max-w-xl sm:mt-20"
+      >
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label
@@ -44,6 +50,8 @@ export default function Example() {
                 id="first-name"
                 autoComplete="given-name"
                 placeholder="Mohsin"
+                required
+                onChange={(e) => setName(e.target.value)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -62,6 +70,7 @@ export default function Example() {
                 id="last-name"
                 autoComplete="family-name"
                 placeholder="King"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -79,6 +88,7 @@ export default function Example() {
                 name="email"
                 id="email"
                 autoComplete="email"
+                required
                 placeholder="mohsinking@gmail.com"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -98,6 +108,7 @@ export default function Example() {
                 id="company"
                 placeholder="Feedback for optimization"
                 autoComplete="organization"
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -115,6 +126,7 @@ export default function Example() {
                 name="message"
                 id="message"
                 rows={4}
+                required
                 placeholder="your feedback/suggestion/query goes here ..."
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
@@ -123,8 +135,11 @@ export default function Example() {
           </div>
         </div>
         <div className="mt-10">
-          <button className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Let's talk
+          <button
+            type="submit"
+            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Send Your Message
           </button>
         </div>
       </form>
