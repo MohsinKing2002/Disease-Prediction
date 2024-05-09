@@ -256,16 +256,19 @@ export default function Example() {
               <label className="text-lg font-medium text-gray-900">
                 {data?.final_prediction}
               </label>
+              .
             </div>
           </div>
         )}
       </div>
 
-      <Toast
-        open={modalopen}
-        type="error"
-        message="Failed to connect to the server!"
-      />
+      {modalopen && (
+        <Toast
+          open={true}
+          type="error"
+          message="Failed to connect to the server!"
+        />
+      )}
     </div>
   );
 }

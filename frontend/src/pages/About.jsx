@@ -1,6 +1,6 @@
 const people = [
   {
-    name: "Mohsin King",
+    name: "Md Mohsin Raja",
     role: "B.Tech CSE 4th Year, ALIAH UNIVERSITY",
     imageUrl: "/mohsin.jpeg",
   },

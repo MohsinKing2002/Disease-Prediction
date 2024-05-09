@@ -60,8 +60,8 @@ def predictDisease():
     X_train, X_test, y_train, y_test =train_test_split(
     X, y, test_size = 0.2, random_state = 24)
 
-    print(f"Train: {X_train.shape}, {y_train.shape}")
-    print(f"Test: {X_test.shape}, {y_test.shape}")
+    # print(f"Train: {X_train.shape}, {y_train.shape}")
+    # print(f"Test: {X_test.shape}, {y_test.shape}")
 
 
     #3. Defining scoring metric for k-fold cross validation
@@ -81,10 +81,10 @@ def predictDisease():
         scores = cross_val_score(model, X, y, cv = 10,
                                 n_jobs = -1,
                                 scoring = cv_scoring)
-        print("=="*30)
-        print(model_name)
-        print(f"Scores: {scores}")
-        print(f"Mean Score: {np.mean(scores)}")
+        # print("=="*30)
+        # print(model_name)
+        # print(f"Scores: {scores}")
+        # print(f"Mean Score: {np.mean(scores)}")
         
         #4.
         # Training and testing SVM Classifier
@@ -92,11 +92,11 @@ def predictDisease():
     svm_model.fit(X_train, y_train)
     preds = svm_model.predict(X_test)
 
-    print(f"Accuracy on train data by SVM Classifier\
-    : {accuracy_score(y_train, svm_model.predict(X_train))*100}")
+    # print(f"Accuracy on train data by SVM Classifier\
+    # : {accuracy_score(y_train, svm_model.predict(X_train))*100}")
 
-    print(f"Accuracy on test data by SVM Classifier\
-    : {accuracy_score(y_test, preds)*100}")
+    # print(f"Accuracy on test data by SVM Classifier\
+    # : {accuracy_score(y_test, preds)*100}")
     cf_matrix = confusion_matrix(y_test, preds)
     #plt.figure(figsize=(12,8))
     #sns.heatmap(cf_matrix, annot=True)
@@ -107,11 +107,11 @@ def predictDisease():
     nb_model = GaussianNB()
     nb_model.fit(X_train, y_train)
     preds = nb_model.predict(X_test)
-    print(f"Accuracy on train data by Naive Bayes Classifier\
-    : {accuracy_score(y_train, nb_model.predict(X_train))*100}")
+    # print(f"Accuracy on train data by Naive Bayes Classifier\
+    # : {accuracy_score(y_train, nb_model.predict(X_train))*100}")
 
-    print(f"Accuracy on test data by Naive Bayes Classifier\
-    : {accuracy_score(y_test, preds)*100}")
+    # print(f"Accuracy on test data by Naive Bayes Classifier\
+    # : {accuracy_score(y_test, preds)*100}")
     cf_matrix = confusion_matrix(y_test, preds)
     #plt.figure(figsize=(12,8))
     #sns.heatmap(cf_matrix, annot=True)
@@ -122,11 +122,11 @@ def predictDisease():
     rf_model = RandomForestClassifier(random_state=18)
     rf_model.fit(X_train, y_train)
     preds = rf_model.predict(X_test)
-    print(f"Accuracy on train data by Random Forest Classifier\
-    : {accuracy_score(y_train, rf_model.predict(X_train))*100}")
+    # print(f"Accuracy on train data by Random Forest Classifier\
+    # : {accuracy_score(y_train, rf_model.predict(X_train))*100}")
 
-    print(f"Accuracy on test data by Random Forest Classifier\
-    : {accuracy_score(y_test, preds)*100}")
+    # print(f"Accuracy on test data by Random Forest Classifier\
+    # : {accuracy_score(y_test, preds)*100}")
 
     cf_matrix = confusion_matrix(y_test, preds)
     #plt.figure(figsize=(12,8))
@@ -173,8 +173,8 @@ def predictDisease():
 
     # final_preds = [mode([i, j, k])[0][0] for i, j, k in zip(svm_preds.tolist(), nb_preds.tolist(), rf_preds.tolist())]
 
-    print(f"Accuracy on Test dataset by the combined model\
-    : {accuracy_score(test_Y, final_preds)*100}")
+    # print(f"Accuracy on Test dataset by the combined model\
+    # : {accuracy_score(test_Y, final_preds)*100}")
 
     cf_matrix = confusion_matrix(test_Y, final_preds)
     #plt.figure(figsize=(12,8))
