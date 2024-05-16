@@ -13,6 +13,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import pickle
 from flask import Flask, jsonify
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -29,8 +30,11 @@ def index():
 def index():
     # Reading the train.csv by removing the
     # last column since it's an empty column
-    DATA_PATH = "/Training.csv"
-    data = pd.read_csv(DATA_PATH).dropna(axis = 1)
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the absolute file path to the CSV file in the root directory
+    csv_file_path = os.path.join(root_dir, 'Training.csv')
+    data = pd.read_csv(csv_file_path).dropna(axis = 1)
 
     # Checking whether the dataset is balanced or not
     disease_counts = data["prognosis"].value_counts()
@@ -137,7 +141,8 @@ def index():
     final_rf_model.fit(X, y)
 
     # Reading the test data
-    test_data = pd.read_csv("/Testing.csv").dropna(axis=1)
+    train_csv_file_path = os.path.join(root_dir, 'Testing.csv')
+    test_data = pd.read_csv(train_csv_file_path).dropna(axis=1)
 
     test_X = test_data.iloc[:, :-1]
     test_Y = encoder.transform(test_data.iloc[:, -1])
