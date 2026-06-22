@@ -1,15 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
 import numpy as np
-import pandas as pd
 from scipy.stats import mode
-from sklearn.preprocessing import LabelEncoder
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import RandomForestClassifier
 from collections import Counter
 import pickle
+
 
 app = Flask(__name__)
 CORS(app)
@@ -25,15 +20,15 @@ data_dict = None
 def load_models():
     global svm_model, nb_model, rf_model, encoder, data_dict
     # Load the trained models and other necessary components using pickle
-    with open("svm_model.pkl", "rb") as f:
+    with open("models/svm_model.pkl", "rb") as f:
         svm_model = pickle.load(f)
-    with open("nb_model.pkl", "rb") as f:
+    with open("models/nb_model.pkl", "rb") as f:
         nb_model = pickle.load(f)
-    with open("rf_model.pkl", "rb") as f:
+    with open("models/rf_model.pkl", "rb") as f:
         rf_model = pickle.load(f)
-    with open("encoder.pkl", "rb") as f:
+    with open("models/encoder.pkl", "rb") as f:
         encoder = pickle.load(f)
-    with open("data_dict.pkl", "rb") as f:
+    with open("models/data_dict.pkl", "rb") as f:
         data_dict = pickle.load(f)
 
 @app.route("/api")
@@ -66,7 +61,8 @@ def predict_disease():
     svm_prediction = data_dict["predictions_classes"][svm_model.predict(input_data)[0]]
 
     # Make the final prediction by taking the mode of all predictions
-    final_prediction = mode([rf_prediction, nb_prediction, svm_prediction])[0][0]
+    predictions = [rf_prediction, nb_prediction, svm_prediction]
+    final_prediction = Counter(predictions).most_common(1)[0][0]
     
     predictions = {
         "rf_model_prediction": rf_prediction,

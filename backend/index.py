@@ -33,7 +33,7 @@ def index():
     root_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Construct the absolute file path to the CSV file in the root directory
-    csv_file_path = os.path.join(root_dir, 'Training.csv')
+    csv_file_path = os.path.join(root_dir, 'datasets/Training.csv')
     data = pd.read_csv(csv_file_path).dropna(axis = 1)
 
     # Checking whether the dataset is balanced or not
@@ -141,7 +141,7 @@ def index():
     final_rf_model.fit(X, y)
 
     # Reading the test data
-    train_csv_file_path = os.path.join(root_dir, 'Testing.csv')
+    train_csv_file_path = os.path.join(root_dir, 'datasets/Testing.csv')
     test_data = pd.read_csv(train_csv_file_path).dropna(axis=1)
 
     test_X = test_data.iloc[:, :-1]
@@ -214,11 +214,11 @@ def index():
         return predictions
     
     #dump/save the models
-    pickle.dump(svm_model,open("svm_model.pkl", "wb"))
-    pickle.dump(rf_model,open("rf_model.pkl", "wb"))
-    pickle.dump(nb_model,open("nb_model.pkl", "wb"))
-    pickle.dump(encoder,open("encoder.pkl", "wb"))
-    pickle.dump(data_dict,open("data_dict.pkl", "wb"))
+    pickle.dump(svm_model,open("models/svm_model.pkl", "wb"))
+    pickle.dump(rf_model,open("models/rf_model.pkl", "wb"))
+    pickle.dump(nb_model,open("models/nb_model.pkl", "wb"))
+    pickle.dump(encoder,open("models/encoder.pkl", "wb"))
+    pickle.dump(data_dict,open("models/data_dict.pkl", "wb"))
 
     # Testing the function
     print(predictDisease("ITCHING,skin rash,nodal skin eruptions"))
