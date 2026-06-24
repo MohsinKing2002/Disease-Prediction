@@ -1,14 +1,16 @@
 import { Fragment, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Listbox, Transition } from "@headlessui/react";
 import {
   CheckIcon,
   ChevronUpDownIcon,
   XMarkIcon,
   CheckCircleIcon,
+  ArrowRightCircleIcon,
 } from "@heroicons/react/20/solid";
 import { symtomps } from "../apis/symtomps";
 import Toast from "../components/Toast";
-const base_url = "http://localhost:5000";
+const base_url = "http://127.0.0.1:5000";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -20,7 +22,7 @@ export default function Example() {
   const [SymptomsData, setSymptomsData] = useState(symtomps);
   const [selected, setSelected] = useState(SymptomsData[0]);
   const [selectedData, setSelectedData] = useState([]);
-  const [data, setData] = useState();
+  const [data, setData] = useState({ final_prediction: "disease" });
 
   const handlePredictionClick = async () => {
     setLoading(true);
@@ -51,7 +53,7 @@ export default function Example() {
     const words = str
       .split(" ")
       .map(
-        (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
       );
 
     // Join the capitalized words with spaces
@@ -87,11 +89,11 @@ export default function Example() {
           <div className="h-60 absolute top-40 left-1/2">
             <div
               role="status"
-              class=" absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
+              className=" absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
             >
               <svg
                 aria-hidden="true"
-                class="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                className="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +107,7 @@ export default function Example() {
                   fill="currentFill"
                 />
               </svg>
-              <span class="sr-only">Loading...</span>
+              <span className="sr-only">Loading...</span>
             </div>
           </div>
         )}
@@ -148,7 +150,7 @@ export default function Example() {
                             active
                               ? "bg-indigo-600 text-white"
                               : "text-gray-900",
-                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                            "relative cursor-default select-none py-2 pl-3 pr-9",
                           )
                         }
                         value={symptom}
@@ -159,7 +161,7 @@ export default function Example() {
                               <span
                                 className={classNames(
                                   selected ? "font-semibold" : "font-normal",
-                                  "ml-3 block truncate"
+                                  "ml-3 block truncate",
                                 )}
                               >
                                 {formatString(symptom)}
@@ -170,7 +172,7 @@ export default function Example() {
                               <span
                                 className={classNames(
                                   active ? "text-white" : "text-indigo-600",
-                                  "absolute inset-y-0 right-0 flex items-center pr-4"
+                                  "absolute inset-y-0 right-0 flex items-center pr-4",
                                 )}
                               >
                                 <CheckIcon
@@ -258,6 +260,14 @@ export default function Example() {
               </label>
               .
             </div>
+
+            <NavLink
+              to="/discuss"
+              className="mt-3 flex items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-normal text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Disscuss more on with Dr AI{" "}
+              <ArrowRightCircleIcon className="ml-2 h-6 w-6" />
+            </NavLink>
           </div>
         )}
       </div>

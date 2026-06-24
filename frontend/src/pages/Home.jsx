@@ -59,7 +59,7 @@ const Home = () => {
 
         {/* time  video player */}
         <video
-          class="w-full md:w-3/4 mx-auto h-auto rounded-lg"
+          className="w-full md:w-3/4 mx-auto h-auto rounded-lg"
           // autoPlay={true}
           // loop={true}
           controls={false}

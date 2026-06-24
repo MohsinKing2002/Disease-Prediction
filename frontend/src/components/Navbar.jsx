@@ -1,20 +1,8 @@
-import { Fragment, useState } from "react";
-import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
-import { NavLink, useLocation } from "react-router-dom";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+import { useState } from "react";
+import { Dialog, Popover } from "@headlessui/react";
+import { NavLink } from "react-router-dom";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 const logo =
   "https://i0.wp.com/www.additudemag.com/wp-content/uploads/2016/11/167_3_Diagnose_Diagnosis_Adult-ADD-Diagnosis_Slideshow_167_doctor-clipboard-diagnosis_ts_488575354.jpg";
 

@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Diagnosis from "./pages/Diagnosis";
 import About from "./pages/About";
+import Discuss from "./pages/Disscuss";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/diagnosis" element={<Diagnosis />} />
+          <Route path="/discuss" element={<Discuss />} />
         </Routes>
       </div>
       <Footer />
